@@ -133,7 +133,7 @@ export default {
           id: this.id,
           name: this.name,
           quantity: this.quantity,
-          price: this.qrice,
+          price: this.price,
           currency: this.currency,
           desc: this.desc,
         })

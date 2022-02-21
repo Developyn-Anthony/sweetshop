@@ -18,7 +18,7 @@
         <td class="data">{{ row.quantity }}</td>
         <td class="data">£{{ row.price }}</td>
         <td class="data">{{ row.currency }}</td>
-        <td class="data">{{ row.desc }}</td>
+        <td class="data">{{ row.description }}</td>
         <td>
           <button type="button" v-on:click="deleteRow(row.id)">Delete</button>
         </td>
@@ -26,14 +26,6 @@
     </table>
     <div class="add-item">
       <form class="add-form">
-        <input
-          class="input-forms"
-          type="number"
-          id="id"
-          v-model="id"
-          placeholder="Product ID"
-          required
-        /><br />
         <input
           class="input-forms"
           type="text"
@@ -100,7 +92,7 @@ export default {
   methods: {
     stockData() {
       axios
-        .get("http://localhost:5000/stock/")
+        .get("http://localhost:5000/sweets")
         .then((response) => {
           this.products = response.data;
         })
@@ -121,7 +113,7 @@ export default {
     },
     deleteRow(id) {
       axios
-        .delete("http://localhost:5000/stock/delete/" + id)
+        .delete("http://localhost:5000/sweets/delete/" + id)
         .then((response) => {
           this.stockData();
           alert("success");
@@ -129,8 +121,7 @@ export default {
     },
     add() {
       axios
-        .post(`http://localhost:5000/stock/add/`, {
-          id: this.id,
+        .post(`http://localhost:5000/sweets/add`, {
           name: this.name,
           quantity: this.quantity,
           price: this.price,
@@ -140,7 +131,7 @@ export default {
         .then((response) => {
           console.log(response);
           this.stockData();
-          alert(response.data.id);
+          alert('Success');
         })
         .catch((error) => {
           if (error.response) {

@@ -92,7 +92,7 @@ export default {
   methods: {
     stockData() {
       axios
-        .get("http://localhost:5000/sweets")
+        .get("http://ant-ec2.developyn.com/sweets")
         .then((response) => {
           this.products = response.data;
         })
@@ -113,7 +113,7 @@ export default {
     },
     deleteRow(id) {
       axios
-        .delete("http://localhost:5000/sweets/delete/" + id)
+        .delete("http://ant-ec2.developyn.com/sweets/delete/" + id)
         .then((response) => {
           this.stockData();
           alert("success");
@@ -121,7 +121,7 @@ export default {
     },
     add() {
       axios
-        .post(`http://localhost:5000/sweets/add`, {
+        .post(`http://ant-ec2.developyn.com/sweets/add`, {
           name: this.name,
           quantity: this.quantity,
           price: this.price,
